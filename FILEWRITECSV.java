@@ -1,33 +1,31 @@
 
-/**
- * Write a description of class FILEWRITECSV here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import javax.swing.*;
+import java.io.*;                   // for general file handling
 public class FILEWRITECSV
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // file object to open, read and close a file
+    private FileWriter fWriter;     // an object to fetch data from file
 
-    /**
-     * Constructor for objects of class FILEWRITECSV
-     */
-    public FILEWRITECSV()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+    // (use default constructor)
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    public void writeCSVtable(String outBuffer) throws IOException
     {
-        // put your code here
-        return x + y;
-    }
+        String csvFile;
+        // Create a file chooser
+        File currentDir = new File("").getAbsoluteFile();
+        final JFileChooser fc = new JFileChooser(currentDir);
+        // In response to a button click:
+        int returnVal = fc.showSaveDialog(null);
+        // open file
+        File file = fc.getSelectedFile();
+        // obtain filename
+        csvFile = file.getName();
+
+        // open the file
+        fWriter = new FileWriter(csvFile);    
+        // write ALL the to the file in 1 burst
+        fWriter.write(outBuffer); 
+        // close the file
+        fWriter.close();
+    }   
 }

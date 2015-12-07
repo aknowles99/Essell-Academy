@@ -1,33 +1,58 @@
 
-/**
- * Write a description of class TICKETORDER here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
+import javax.swing.JOptionPane;    
 public class TICKETORDER
 {
-    // instance variables - replace the example below with your own
-    private int x;
 
-    /**
-     * Constructor for objects of class TICKETORDER
-     */
+    private String fName;
+    private String sName;
+    private int mark;
     public TICKETORDER()
     {
         // initialise instance variables
-        x = 0;
+        fName = "";
+        sName = "";
+
+        mark = 0;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    // file handling store details from file
+    public void readTicketorderDetails(String dataItems)
     {
-        // put your code here
-        return x + y;
+        String[] rowItems = dataItems.split(",");
+        // store each data item as instance property
+        fName = rowItems[0];
+        sName = rowItems[1];
+
+        mark = Integer.parseInt(rowItems[2]);
     }
+
+    public String writeDetails()
+    {
+        // join up data into a string to output as a row
+        // use "," to separate csv columns
+        String memberData = "";
+        memberData = memberData.concat(fName);
+        memberData = memberData.concat(",");
+        memberData = memberData.concat(sName);
+        memberData = memberData.concat(",");
+        memberData = memberData.concat(Float.toString(mark));
+        return memberData;
+    }
+
+    public int getMARK() 
+    {
+        return mark;
+    }
+
+    public void displayDetails()
+    {
+        // output basic details
+        System.out.print("Member: " + fName + " " + sName);
+        System.out.print(",  mark is " + mark);
+       
+        System.out.println();
+    }
+
 }
+//TICKETORDER=toppupil
