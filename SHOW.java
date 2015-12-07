@@ -8,21 +8,21 @@ public class SHOW
     
     private TICKETORDER ticketorderlist[];
     int noOfTicketorder;
-    int topmark;
+    int purchasemethod;
 
     // CLASSes to open, create, read/write, close files
-    FILEREADCSV markFile; 
+    FILEREADCSV purchaseFile; 
     // CLASSes to open, create, read/write, close files
     FILEWRITECSV resultsFile;        
 
     public SHOW()  throws IOException
     {
         // create file handler objects
-        markFile = new FILEREADCSV();
+        purchaseFile = new FILEREADCSV();
 
         resultsFile = new FILEWRITECSV();
 
-        topmark = 0;
+        purchasemethod = 0;
         noOfTicketorder = 49;
 
     }
@@ -30,18 +30,18 @@ public class SHOW
     public void processTicketorder()  throws IOException
     {
         setUpTicketorderList();
-        displayTicketorder();
-        countMARK();
+        //displayTicketorder();
+        countPURCHASE();
     }
 
     private void setUpTicketorderList() throws IOException
     {
         // First user message
-        System.out.println("ScotFit Club: Membership BMI update/n");
+     
         System.out.println("** Preparing to read data file.");
 
         // read file, fetch data as String array containing the rows
-        String[] dataRows = markFile.readCSVtable();
+        String[] dataRows = purchaseFile.readCSVtable();
         // calculate the number of member rows, skip headings
         noOfTicketorder = dataRows.length - 1;
 
@@ -58,18 +58,18 @@ public class SHOW
         }
     }
 
-    public void displayTicketorder() {
+   // public void displayTicketorder() {
         // Heading for the display
-        System.out.println("A listing of all applicants for the next year\n");
+        //ystem.out.println("A listing of all applicants for the next year\n");
         // results
-        for  (int i = 0; i < noOfTicketorder; i++) {
-            ticketorderlist[i].displayDetails();
-        }
+        //for  (int i = 0; i < noOfTicketorder; i++) {
+        //    ticketorderlist[i].displayDetails();
+        //}
         // 2 blank line to separate this report from others.
-        System.out.print("\n\n\n");
-    }
+       // System.out.print("\n\n\n");
+   // }
 
-    public void countMARK() throws IOException
+    public void countPURCHASE() throws IOException
     {
         // *prepare a String to write data to disc
         String fileContent = "";
@@ -82,7 +82,7 @@ public class SHOW
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
-            if (ticketorderlist[i].getMARK() > topmark)
+            if (ticketorderlist[i].getPURCHASE() > purchasemethod)
             {
                 // add 1 to count: for OK bmi
                 topmark = ticketorderlist[i].getMARK() ;

@@ -4,16 +4,19 @@ import javax.swing.JOptionPane;
 public class TICKETORDER
 {
 
-    private String fName;
-    private String sName;
-    private int mark;
+    private String cID;
+    private String tID;
+    private int not;
+      private String purchase;
     public TICKETORDER()
     {
         // initialise instance variables
-        fName = "";
-        sName = "";
+        
+        cID= "";
+        tID = "";
+        purchase = "";
 
-        mark = 0;
+        not = 0;
     }
 
     // file handling store details from file
@@ -21,10 +24,13 @@ public class TICKETORDER
     {
         String[] rowItems = dataItems.split(",");
         // store each data item as instance property
-        fName = rowItems[0];
-        sName = rowItems[1];
+        cID = rowItems[0];
+        tID = rowItems[1];
 
-        mark = Integer.parseInt(rowItems[2]);
+        not = Integer.parseInt(rowItems[2]);
+        purchase = rowItems[3];
+        
+        
     }
 
     public String writeDetails()
@@ -32,27 +38,32 @@ public class TICKETORDER
         // join up data into a string to output as a row
         // use "," to separate csv columns
         String memberData = "";
-        memberData = memberData.concat(fName);
+        memberData = memberData.concat(cID);
         memberData = memberData.concat(",");
-        memberData = memberData.concat(sName);
+        memberData = memberData.concat(tID);
         memberData = memberData.concat(",");
-        memberData = memberData.concat(Float.toString(mark));
+        memberData = memberData.concat(Float.toString(not));
+         memberData = memberData.concat(",");
+        memberData = memberData.concat(purchase);
+        
         return memberData;
     }
 
-    public int getMARK() 
+    public String getPURCHASE() 
     {
-        return mark;
+        return purchase;
     }
 
-    public void displayDetails()
-    {
+    //public void displayDetails()
+    //{
         // output basic details
-        System.out.print("Member: " + fName + " " + sName);
-        System.out.print(",  mark is " + mark);
+        //System.out.print("Member: " +  + " " + sName);
+        //System.out.print(",  mark is " + mark);
        
-        System.out.println();
-    }
+        //System.out.println();
+    //}
 
 }
 //TICKETORDER=toppupil
+//MARK = PURCHASE
+//TOPMARK=PURCHASEMETHOD
