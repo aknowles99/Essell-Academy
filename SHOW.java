@@ -8,7 +8,7 @@ public class SHOW
     
     private TICKETORDER ticketorderlist[];
     int noOfTicketorder;
-    int purchasemethod;
+    String purchasemethod;
 
     // CLASSes to open, create, read/write, close files
     FILEREADCSV purchaseFile; 
@@ -22,7 +22,7 @@ public class SHOW
 
         resultsFile = new FILEWRITECSV();
 
-        purchasemethod = 0;
+        purchasemethod = " ";
         noOfTicketorder = 49;
 
     }
@@ -78,14 +78,15 @@ public class SHOW
          int personnumber = 0;
         // start the count
         int count = 0;
+        int Smethod = 0;
         // loop for each item : member
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
-            if (ticketorderlist[i].getPURCHASE() > purchasemethod)
+            if (ticketorderlist[i].getPURCHASE() = S)
             {
                 // add 1 to count: for OK bmi
-                topmark = ticketorderlist[i].getMARK() ;
+                Smethod
                 // *display the details for the member
                 personnumber = i;
 
