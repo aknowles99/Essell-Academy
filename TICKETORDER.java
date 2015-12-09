@@ -5,18 +5,18 @@ public class TICKETORDER
 {
 
     private String cID;
-    private String tID;
-    private int not;
+    private char tID;
+    private int notickets;
       private String purchase;
     public TICKETORDER()
     {
         // initialise instance variables
         
         cID= "";
-        tID = "";
+        tID = ' ';
         purchase = "";
 
-        not = 0;
+        notickets = 0;
     }
 
     // file handling store details from file
@@ -25,35 +25,39 @@ public class TICKETORDER
         String[] rowItems = dataItems.split(",");
         // store each data item as instance property
         cID = rowItems[0];
-        tID = rowItems[1];
+        tID = (rowItems[1]).charAt(0);
 
-        not = Integer.parseInt(rowItems[2]);
+        notickets = Integer.parseInt(rowItems[2]);
         purchase = rowItems[3];
         
         
     }
 
-    public String writeDetails()
-    {
+    //public String writeDetails()
+    //{
         // join up data into a string to output as a row
         // use "," to separate csv columns
-        String memberData = "";
-        memberData = memberData.concat(cID);
-        memberData = memberData.concat(",");
-        memberData = memberData.concat(tID);
-        memberData = memberData.concat(",");
-        memberData = memberData.concat(Float.toString(not));
-         memberData = memberData.concat(",");
-        memberData = memberData.concat(purchase);
+        //String memberData = "";
+        //memberData = memberData.concat(cID);
+        //memberData = memberData.concat(",");
+        //memberData = memberData.concat(char.toString(tID));
+        //memberData = memberData.concat(",");
+        //memberData = memberData.concat(Float.toString(notickets));
+        // memberData = memberData.concat(",");
+        //memberData = memberData.concat(purchase);
         
-        return memberData;
-    }
+        //return memberData;
+    //}
 
     public String getPURCHASE() 
     {
         return purchase;
     }
 
+    public char gettID() 
+    {
+        return tID;
+    }
     //public void displayDetails()
     //{
         // output basic details

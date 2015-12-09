@@ -9,6 +9,7 @@ public class SHOW
     private TICKETORDER ticketorderlist[];
     int noOfTicketorder;
     String purchasemethod;
+    int Total;
 
     // CLASSes to open, create, read/write, close files
     FILEREADCSV purchaseFile; 
@@ -21,7 +22,7 @@ public class SHOW
         purchaseFile = new FILEREADCSV();
 
         resultsFile = new FILEWRITECSV();
-
+        Total = 0;
         purchasemethod = " ";
         noOfTicketorder = 49;
 
@@ -74,29 +75,33 @@ public class SHOW
         // *prepare a String to write data to disc
         String fileContent = "";
 
-        System.out.println("A report of members within ideal BMI\n");
-         int personnumber = 0;
+        
+        
         // start the count
         int count = 0;
-        int Smethod = 0;
+       
         // loop for each item : member
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
-            if (ticketorderlist[i].getPURCHASE() = S)
+            if (ticketorderlist[i].gettID() = T || W )
             {
-                // add 1 to count: for OK bmi
-                Smethod
+               
+               Total = Total + 5;
                 // *display the details for the member
-                personnumber = i;
-
-                // *use new line to separate rows in csv file, after 1st line
-                if (count>1) 
-                {
-                    fileContent = fileContent.concat("\n");
+              
+              else if  ( ticketorderlist[i].gettID() = F  )
+              {
+                  Total = Total + 10;
                 }
+                // *use new line to separate rows in csv file, after 1st line
+                
+               // if (count>1) 
+               // {
+               //     fileContent = fileContent.concat("\n");
+                //}
                 // *join on next line of data for writing to file
-                fileContent = fileContent.concat(ticketorderlist[i].writeDetails());
+               // fileContent = fileContent.concat(ticketorderlist[i].writeDetails());
             }
         }
         // display the final count: bmi
