@@ -33,21 +33,21 @@ public class TICKETORDER
         
     }
 
-    //public String writeDetails()
-    //{
+    public String writeDetails()
+    {
         // join up data into a string to output as a row
         // use "," to separate csv columns
-        //String memberData = "";
-        //memberData = memberData.concat(cID);
-        //memberData = memberData.concat(",");
-        //memberData = memberData.concat(char.toString(tID));
-        //memberData = memberData.concat(",");
-        //memberData = memberData.concat(Float.toString(notickets));
-        // memberData = memberData.concat(",");
-        //memberData = memberData.concat(purchase);
+        String memberData = "";
+        memberData = memberData.concat(cID);
+        memberData = memberData.concat(",");
+        memberData = memberData.concat(char.toString(tID));
+       memberData = memberData.concat(",");
+        memberData = memberData.concat(Float.toString(notickets));
+         memberData = memberData.concat(",");
+        memberData = memberData.concat(purchase);
         
-        //return memberData;
-    //}
+        return memberData;
+    }
 
     public String getPURCHASE() 
     {

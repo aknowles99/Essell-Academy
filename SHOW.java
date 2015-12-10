@@ -89,7 +89,7 @@ public class SHOW
                
                Total = Total + 5;
                 // *display the details for the member
-              
+            }
               else if  ( ticketorderlist[i].gettID() = F  )
               {
                   Total = Total + 10;
@@ -105,8 +105,8 @@ public class SHOW
             }
         }
         // display the final count: bmi
-        System.out.println("\n Top mark is  : " + topmark);
-        System.out.println("which belongs to : " + personnumber);
+        System.out.println("\n The total money rasied for charity is £" + Total);
+        System.out.println("the most popular method of sale is " + personnumber);
         // A blank line to separate this report from others.
         System.out.println();
 
