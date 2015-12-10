@@ -7,9 +7,10 @@ public class SHOW
     // number of members calculated after reading file
     
     private TICKETORDER ticketorderlist[];
-    int noOfTicketorder;
-    String purchasemethod;
-    int Total;
+    private int noOfTicketorder;
+    private String purchasemethod;
+     private String poppurchasemethod;
+    private int Total;
 
     // CLASSes to open, create, read/write, close files
     FILEREADCSV purchaseFile; 
@@ -25,7 +26,7 @@ public class SHOW
         Total = 0;
         purchasemethod = " ";
         noOfTicketorder = 49;
-
+poppurchasemethod = " ";
     }
 
     public void processTicketorder()  throws IOException
@@ -106,7 +107,7 @@ public class SHOW
         }
         // display the final count: bmi
         System.out.println("\n The total money rasied for charity is £" + Total);
-        System.out.println("the most popular method of sale is " + personnumber);
+        System.out.println("the most popular method of sale is " + poppurchasemethod);
         // A blank line to separate this report from others.
         System.out.println();
 
@@ -121,5 +122,6 @@ public class SHOW
         SHOW myShow = new SHOW();
         myShow.processTicketorder();
     }
+}
 }
 //show=pupil
