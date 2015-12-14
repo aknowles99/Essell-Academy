@@ -34,8 +34,9 @@ public class SHOW
     public void processTicketorder()  throws IOException
     {
         setUpTicketorderList();
+         countPURCHASE();
         Display();
-        calcMethod();
+        calcMETHOD();
         countPURCHASE();
     }
 
@@ -95,6 +96,7 @@ public class SHOW
             else if  ( ticketorderlist[i].gettID() = F  )
             {
                 Total = Total + 10;
+                 resultsFile.writeCSVtable(fileContent);
             }
             if ( ticketorderlist[i].getPURCHASE() = S )
             {
@@ -112,9 +114,8 @@ public class SHOW
             //System.out.println();
 
             // *send for writing to file as a string containing all data
-            System.out.println("** Preparing to write data file.");
-            resultsFile.writeCSVtable(fileContent);
-            System.out.println("** File written and closed.");
+           
+           
         }
     }
         public static void main(String[] args)  throws IOException
