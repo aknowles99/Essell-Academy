@@ -5,11 +5,12 @@ public class SHOW
     // array of MEMBER objects
 
     // number of members calculated after reading file
-    
+
     private TICKETORDER ticketorderlist[];
     private int noOfTicketorder;
-    private String purchasemethod;
-     private String poppurchasemethod;
+    private String purchasemethodW;
+    private String purchasemethodS;
+    private String popmethod;
     private int Total;
 
     // CLASSes to open, create, read/write, close files
@@ -24,22 +25,24 @@ public class SHOW
 
         resultsFile = new FILEWRITECSV();
         Total = 0;
-        purchasemethod = " ";
+        purchasemethodW = " ";
+        purchasemethodS = " ";
         noOfTicketorder = 49;
-poppurchasemethod = " ";
+        popmethod = " ";
     }
 
     public void processTicketorder()  throws IOException
     {
         setUpTicketorderList();
-        //displayTicketorder();
+        Display();
+        calcMethod();
         countPURCHASE();
     }
 
     private void setUpTicketorderList() throws IOException
     {
         // First user message
-     
+
         System.out.println("** Preparing to read data file.");
 
         // read file, fetch data as String array containing the rows
@@ -51,77 +54,95 @@ poppurchasemethod = " ";
         System.out.println("** " + noOfTicketorder + " rows read.\n\n");
 
         // prepare array for members
-       ticketorderlist = new TICKETORDER[noOfTicketorder];
+        ticketorderlist = new TICKETORDER[noOfTicketorder];
         // create member objects and copy data from source
         for  (int i = 0; i < noOfTicketorder; i++) {
-          ticketorderlist[i] = new TICKETORDER();
+            ticketorderlist[i] = new TICKETORDER();
             // adjust to skip headings
-           ticketorderlist[i].readTicketorderDetails(dataRows[i+1]);
+            ticketorderlist[i].readTicketorderDetails(dataRows[i+1]);
         }
     }
 
-   // public void displayTicketorder() {
-        // Heading for the display
-        //ystem.out.println("A listing of all applicants for the next year\n");
-        // results
-        //for  (int i = 0; i < noOfTicketorder; i++) {
-        //    ticketorderlist[i].displayDetails();
-        //}
-        // 2 blank line to separate this report from others.
-       // System.out.print("\n\n\n");
-   // }
+    // public void displayTicketorder() {
+    // Heading for the display
+    //ystem.out.println("A listing of all applicants for the next year\n");
+    // results
+    //for  (int i = 0; i < noOfTicketorder; i++) {
+    //    ticketorderlist[i].displayDetails();
+    //}
+    // 2 blank line to separate this report from others.
+    // System.out.print("\n\n\n");
+    // }
 
     public void countPURCHASE() throws IOException
     {
         // *prepare a String to write data to disc
         String fileContent = "";
 
-        
-        
         // start the count
         int count = 0;
-       
+
         // loop for each item : member
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
             if (ticketorderlist[i].gettID() = T || W )
             {
-               
-               Total = Total + 5;
+
+                Total = Total + 5;
                 // *display the details for the member
             }
-              else if  ( ticketorderlist[i].gettID() = F  )
-              {
-                  Total = Total + 10;
-                }
-                // *use new line to separate rows in csv file, after 1st line
-                
-               // if (count>1) 
-               // {
-               //     fileContent = fileContent.concat("\n");
-                //}
-                // *join on next line of data for writing to file
-               // fileContent = fileContent.concat(ticketorderlist[i].writeDetails());
+            else if  ( ticketorderlist[i].gettID() = F  )
+            {
+                Total = Total + 10;
             }
+            if ( ticketorderlist[i].getPURCHASE() = S )
+            {
+                purchasemethodS = purchasemethodS +1;
+            }
+            else if ( ticketorderlist[i].getPURCHASE() = W )
+            {
+                purchasemethodW = purchasemethodW +1;
+            }
+
+            // display the final count: bmi
+            //System.out.println("\n The total money rasied for charity is £" + Total);
+            //System.out.println("the most popular method of sale is " + popmethod);
+            // A blank line to separate this report from others.
+            //System.out.println();
+
+            // *send for writing to file as a string containing all data
+            System.out.println("** Preparing to write data file.");
+            resultsFile.writeCSVtable(fileContent);
+            System.out.println("** File written and closed.");
         }
-        // display the final count: bmi
-        System.out.println("\n The total money rasied for charity is £" + Total);
-        System.out.println("the most popular method of sale is " + poppurchasemethod);
-        // A blank line to separate this report from others.
-        System.out.println();
-
-        // *send for writing to file as a string containing all data
-        System.out.println("** Preparing to write data file.");
-        resultsFile.writeCSVtable(fileContent);
-        System.out.println("** File written and closed.");
     }
+        public static void main(String[] args)  throws IOException
+        {
+            SHOW myShow = new SHOW();
+            myShow.processTicketorder();
+        }
+    
 
-    public static void main(String[] args)  throws IOException
+    public void calcMETHOD()
+
     {
-        SHOW myShow = new SHOW();
-        myShow.processTicketorder();
+        if (purchasemethodS > purchasemethodW)
+        {
+          popmethod = "sold in school";
+        }
+        else if (purchasemethodW > purchasemethodS)
+        {
+              popmethod = "sold online";
+        }
     }
+
+    public void Display()
+    {
+           System.out.println("\n The total money rasied for charity is £" + Total);
+            System.out.println("the most popular method of sale is " + popmethod);
+            // A blank line to separate this report from others.
+            System.out.println();
+    }
+    //show=pupil
 }
-}
-//show=pupil
