@@ -87,7 +87,7 @@ public class SHOW
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
-            if ( ticketorderlist[i].getPURCHASE.equals S )
+            if ( ticketorderlist[i].getPURCHASE.equals("S"))
             {
                 purchasemethodS = purchasemethodS +1;
             }
