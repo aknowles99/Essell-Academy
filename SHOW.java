@@ -34,7 +34,7 @@ public class SHOW
     public void processTicketorder()  throws IOException
     {
         setUpTicketorderList();
-         countPURCHASE();
+        countPURCHASE();
         Display();
         calcMETHOD();
         countPURCHASE();
@@ -87,6 +87,15 @@ public class SHOW
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
+            if ( ticketorderlist[i].getPURCHASE.equals S )
+            {
+                purchasemethodS = purchasemethodS +1;
+            }
+            else if ( ticketorderlist[i].getPURCHASE() = W )
+            {
+                purchasemethodW = purchasemethodW +1;
+            }
+
             if (ticketorderlist[i].gettID() = T || W )
             {
 
@@ -96,15 +105,7 @@ public class SHOW
             else if  ( ticketorderlist[i].gettID() = F  )
             {
                 Total = Total + 10;
-                 resultsFile.writeCSVtable(fileContent);
-            }
-            if ( ticketorderlist[i].getPURCHASE() = S )
-            {
-                purchasemethodS = purchasemethodS +1;
-            }
-            else if ( ticketorderlist[i].getPURCHASE() = W )
-            {
-                purchasemethodW = purchasemethodW +1;
+                resultsFile.writeCSVtable(fileContent);
             }
 
             // display the final count: bmi
@@ -114,36 +115,34 @@ public class SHOW
             //System.out.println();
 
             // *send for writing to file as a string containing all data
-           
-           
+
         }
     }
-        public static void main(String[] args)  throws IOException
-        {
-            SHOW myShow = new SHOW();
-            myShow.processTicketorder();
-        }
-    
+
+    public static void main(String[] args)  throws IOException
+    {
+        SHOW myShow = new SHOW();
+        myShow.processTicketorder();
+    }
 
     public void calcMETHOD()
-
     {
         if (purchasemethodS > purchasemethodW)
         {
-          popmethod = "sold in school";
+            popmethod = "sold in school";
         }
         else if (purchasemethodW > purchasemethodS)
         {
-              popmethod = "sold online";
+            popmethod = "sold online";
         }
     }
 
     public void Display()
     {
-           System.out.println("\n The total money rasied for charity is £" + Total);
-            System.out.println("the most popular method of sale is " + popmethod);
-            // A blank line to separate this report from others.
-            System.out.println();
+        System.out.println("\n The total money rasied for charity is £" + Total);
+        System.out.println("the most popular method of sale is " + popmethod);
+        // A blank line to separate this report from others.
+        System.out.println();
     }
     //show=pupil
 }

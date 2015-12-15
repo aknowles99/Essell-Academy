@@ -1,5 +1,4 @@
 
-
 import javax.swing.JOptionPane;    
 public class TICKETORDER
 {
@@ -8,15 +7,15 @@ public class TICKETORDER
     private char tID;
     private int notickets;
     private String ticketID;
-      private String purchase;
+    private String purchase;
     public TICKETORDER()
     {
         // initialise instance variables
-        
+
         cID= "";
         tID = ' ';
         purchase = "";
-ticketID ="";
+        ticketID ="";
         notickets = 0;
     }
 
@@ -30,24 +29,22 @@ ticketID ="";
         ticketID =rowItems[1];
         notickets = Integer.parseInt(rowItems[2]);
         purchase = rowItems[3];
-        
-        
-    }
 
+    }
     public String writeDetails()
     {
         // join up data into a string to output as a row
-       // use "," to separate csv columns
-        
+        // use "," to separate csv columns
+
         String memberData = "";
         memberData = memberData.concat(cID);
         memberData = memberData.concat(",");
         memberData = memberData.concat((ticketID));
-       memberData = memberData.concat(",");
+        memberData = memberData.concat(",");
         memberData = memberData.concat(Float.toString(notickets));
-         memberData = memberData.concat(",");
+        memberData = memberData.concat(",");
         memberData = memberData.concat(purchase);
-        
+
         return memberData;
     }
 
@@ -62,11 +59,11 @@ ticketID ="";
     }
     //public void displayDetails()
     //{
-        // output basic details
-        //System.out.print("Member: " +  + " " + sName);
-        //System.out.print(",  mark is " + mark);
-       
-        //System.out.println();
+    // output basic details
+    //System.out.print("Member: " +  + " " + sName);
+    //System.out.print(",  mark is " + mark);
+
+    //System.out.println();
     //}
 
 }
