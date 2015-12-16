@@ -49,7 +49,7 @@ public class SHOW
         // read file, fetch data as String array containing the rows
         String[] dataRows = purchaseFile.readCSVtable();
         // calculate the number of member rows, skip headings
-        noOfTicketorder = dataRows.length - 1;
+        noOfTicketorder = dataRows.length ;
 
         // update user with number of rows with membership details
         System.out.println("** " + noOfTicketorder + " rows read.\n\n");
@@ -87,7 +87,7 @@ public class SHOW
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
-            if ( ticketorderlist[i].getPURCHASE().equals("S"))
+            if (ticketorderlist[i].getPURCHASE().equals("S"))
             {
                 purchasemethodS = purchasemethodS +1;
             }
