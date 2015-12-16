@@ -8,8 +8,8 @@ public class SHOW
 
     private TICKETORDER ticketorderlist[];
     private int noOfTicketorder;
-    private String purchasemethodW;
-    private String purchasemethodS;
+    private int purchasemethodW;
+    private int purchasemethodS;
     private String popmethod;
     private int Total;
 
@@ -25,8 +25,8 @@ public class SHOW
 
         resultsFile = new FILEWRITECSV();
         Total = 0;
-        purchasemethodW = " ";
-        purchasemethodS = " ";
+        purchasemethodW = 0;
+        purchasemethodS = 0;
         noOfTicketorder = 49;
         popmethod = " ";
     }
@@ -87,22 +87,22 @@ public class SHOW
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
-            if ( ticketorderlist[i].getPURCHASE.equals("S"))
+            if ( ticketorderlist[i].getPURCHASE().equals("S"))
             {
                 purchasemethodS = purchasemethodS +1;
             }
-            else if ( ticketorderlist[i].getPURCHASE() = W )
+            else 
             {
                 purchasemethodW = purchasemethodW +1;
             }
 
-            if (ticketorderlist[i].gettID() = T || W )
+            if (ticketorderlist[i].gettID() == 'T' || ticketorderlist[i].gettID() == 'W')
             {
 
                 Total = Total + 5;
                 // *display the details for the member
             }
-            else if  ( ticketorderlist[i].gettID() = F  )
+            else 
             {
                 Total = Total + 10;
                 resultsFile.writeCSVtable(fileContent);

@@ -13,7 +13,7 @@ public class TICKETORDER
         // initialise instance variables
 
         cID= "";
-        tID = ' ';
+        tID = ' ' ;
         purchase = "";
         ticketID ="";
         notickets = 0;
