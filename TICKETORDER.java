@@ -7,16 +7,18 @@ public class TICKETORDER
     private char tID;
     private int notickets;
     private String ticketID;
-    private String purchase;
+    private char purchase;
+     private String purchasefull;
     public TICKETORDER()
     {
         // initialise instance variables
 
         cID= "";
         tID = ' ' ;
-        purchase = "";
+        purchase = ' ';
         ticketID ="";
         notickets = 0;
+        purchasefull = " ";
     }
 
     // file handling store details from file
@@ -28,7 +30,8 @@ public class TICKETORDER
         tID = (rowItems[1]).charAt(0);
         ticketID =rowItems[1];
         notickets = Integer.parseInt(rowItems[2]);
-        purchase = rowItems[3];
+        purchase = rowItems[3].charAt(0);
+        purchasefull = rowItems[3];
 
     }
     public String writeDetails()
@@ -43,12 +46,12 @@ public class TICKETORDER
         memberData = memberData.concat(",");
         memberData = memberData.concat(Float.toString(notickets));
         memberData = memberData.concat(",");
-        memberData = memberData.concat(purchase);
+        memberData = memberData.concat(purchasefull);
 
         return memberData;
     }
 
-    public String getPURCHASE() 
+    public char getPURCHASE() 
     {
         return purchase;
     }

@@ -27,7 +27,7 @@ public class SHOW
         Total = 0;
         purchasemethodW = 0;
         purchasemethodS = 0;
-        noOfTicketorder = 49;
+        noOfTicketorder = 0;
         popmethod = " ";
     }
 
@@ -46,21 +46,19 @@ public class SHOW
 
         System.out.println("** Preparing to read data file.");
 
-        // read file, fetch data as String array containing the rows
         String[] dataRows = purchaseFile.readCSVtable();
-        // calculate the number of member rows, skip headings
+       
         noOfTicketorder = dataRows.length ;
 
-        // update user with number of rows with membership details
         System.out.println("** " + noOfTicketorder + " rows read.\n\n");
 
-        // prepare array for members
+      
         ticketorderlist = new TICKETORDER[noOfTicketorder];
-        // create member objects and copy data from source
+     
         for  (int i = 0; i < noOfTicketorder; i++) {
             ticketorderlist[i] = new TICKETORDER();
-            // adjust to skip headings
-            ticketorderlist[i].readTicketorderDetails(dataRows[i+1]);
+            
+            ticketorderlist[i].readTicketorderDetails(dataRows[i]);
         }
     }
 
@@ -87,7 +85,7 @@ public class SHOW
         for (int i = 0; i < noOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
-            if (ticketorderlist[i].getPURCHASE().equals("S"))
+            if (ticketorderlist[i].getPURCHASE() == 'S' )
             {
                 purchasemethodS = purchasemethodS +1;
             }
