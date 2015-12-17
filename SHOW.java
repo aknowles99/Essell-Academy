@@ -35,7 +35,8 @@ public class SHOW
     {
         setUpTicketorderList();
         countPURCHASE();
-                calcMETHOD();
+        calcMETHOD();
+        saveNewMembers();
         Display();
     
 
@@ -104,6 +105,7 @@ public class SHOW
             else 
             {
                 Total = Total + 10;
+                
                 //resultsFile.writeCSVtable(fileContent);
             }
 
@@ -116,6 +118,29 @@ public class SHOW
             // *send for writing to file as a string containing all data
 
         }
+    
+    }
+     public void saveNewMembers() throws IOException
+    {
+        String fileContent = "";
+        int count = 0;
+        for (int i = 0; i < noOfTicketorder; i++) 
+        {
+            if(ticketorderlist[i].gettID() == 'F' )
+            {
+                count = count + 1;
+                if (count>1) 
+                {
+                    fileContent = fileContent.concat("\n");
+                }
+                fileContent = fileContent.concat(ticketorderlist[i].writeDetails());
+            }
+        }
+
+        // *send for writing to file as a string containing all data
+        System.out.println("** Preparing to write new members file.");
+        resultsFile.writeCSVtable(fileContent);
+        System.out.println("** File written and closed.");
     }
 
     public static void main(String[] args)  throws IOException
