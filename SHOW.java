@@ -35,9 +35,10 @@ public class SHOW
     {
         setUpTicketorderList();
         countPURCHASE();
+                calcMETHOD();
         Display();
-        calcMETHOD();
-        countPURCHASE();
+    
+
     }
 
     private void setUpTicketorderList() throws IOException
@@ -103,7 +104,7 @@ public class SHOW
             else 
             {
                 Total = Total + 10;
-                resultsFile.writeCSVtable(fileContent);
+                //resultsFile.writeCSVtable(fileContent);
             }
 
             // display the final count: bmi
@@ -129,7 +130,7 @@ public class SHOW
         {
             popmethod = "sold in school";
         }
-        else if (purchasemethodW > purchasemethodS)
+        else 
         {
             popmethod = "sold online";
         }
@@ -138,7 +139,7 @@ public class SHOW
     public void Display()
     {
         System.out.println("\n The total money rasied for charity is £" + Total);
-        System.out.println("the most popular method of sale is " + popmethod);
+        System.out.println("the most popular method of sale is " + (popmethod));
         // A blank line to separate this report from others.
         System.out.println();
     }
