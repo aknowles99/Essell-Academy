@@ -1,5 +1,6 @@
 import javax.swing.JOptionPane;
-import java.io.*;               // for general file handling
+import java.io.*; 
+import java.util.Calendar;              // for general file handling
 public class SHOW
 {
     // array of MEMBER objects
@@ -12,6 +13,7 @@ public class SHOW
     private int purchasemethodS;
     private String popmethod;
     private int Total;
+    private int year;
 
     // CLASSes to open, create, read/write, close files
     FILEREADCSV purchaseFile; 
@@ -22,7 +24,7 @@ public class SHOW
     {
         // create file handler objects
         purchaseFile = new FILEREADCSV();
-
+        year = 0;
         resultsFile = new FILEWRITECSV();
         Total = 0;
         purchasemethodW = 0;
@@ -37,6 +39,7 @@ public class SHOW
         countPURCHASE();
         calcMETHOD();
         saveNewMembers();
+        getdate();
         Display();
     
 
@@ -142,6 +145,10 @@ public class SHOW
         resultsFile.writeCSVtable(fileContent);
         System.out.println("** File written and closed.");
     }
+    public void getdate()
+    {
+        year = Calendar.getInstance().get(Calendar.YEAR);
+    }
 
     public static void main(String[] args)  throws IOException
     {
@@ -163,6 +170,7 @@ public class SHOW
 
     public void Display()
     {
+        System.out.println("\n Essell Academy Choral Shield " + year);
         System.out.println("\n The total money rasied for charity is £" + Total);
         System.out.println("the most popular method of sale is " + (popmethod));
         // A blank line to separate this report from others.
