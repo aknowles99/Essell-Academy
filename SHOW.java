@@ -3,11 +3,11 @@ import java.io.*;
 import java.util.Calendar;              // for general file handling
 public class SHOW
 {
-    // array of MEMBER objects
+   
 
-    // number of members calculated after reading file
-
-    private TICKETORDER ticketorderlist[];
+    
+ 
+    private TICKETORDER ticketorderlist[];// array of ticket orders 
     private int noOfTicketorder;
     private int purchasemethodW;
     private int purchasemethodS;
@@ -22,7 +22,7 @@ public class SHOW
 
     public SHOW()  throws IOException
     {
-        // create file handler objects
+       //declaring the variables
         purchaseFile = new FILEREADCSV();
         year = 0;
         resultsFile = new FILEWRITECSV();
@@ -47,13 +47,13 @@ public class SHOW
 
     private void setUpTicketorderList() throws IOException
     {
-        // First user message
+       
 
         System.out.println("** Preparing to read data file.");
 
         String[] dataRows = purchaseFile.readCSVtable();
        
-        noOfTicketorder = dataRows.length ;
+        noOfTicketorder = dataRows.length ;// number of orders calculated after reading file
 
         System.out.println("** " + noOfTicketorder + " rows read.\n\n");
 
@@ -66,17 +66,6 @@ public class SHOW
             ticketorderlist[i].readTicketorderDetails(dataRows[i]);
         }
     }
-
-    // public void displayTicketorder() {
-    // Heading for the display
-    //ystem.out.println("A listing of all applicants for the next year\n");
-    // results
-    //for  (int i = 0; i < noOfTicketorder; i++) {
-    //    ticketorderlist[i].displayDetails();
-    //}
-    // 2 blank line to separate this report from others.
-    // System.out.print("\n\n\n");
-    // }
 
     public void countPURCHASE() throws IOException
     {
