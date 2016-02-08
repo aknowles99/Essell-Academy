@@ -3,17 +3,15 @@ import java.io.*;
 import java.util.Calendar;              // for general file handling
 public class SHOW
 {
-   
 
     
- 
     private TICKETORDER ticketorderlist[];// array of ticket orders 
     private int noOfTicketorder;
-      private int purchasemethodS;
+    private int purchasemethodS;
     private int Total;
     private int year;
     private int purchasemethodW;
- private String popmethod;
+    private String popmethod;
 
     // CLASSes to open, create, read/write, close files
     FILEREADCSV purchaseFile; 
@@ -22,7 +20,7 @@ public class SHOW
 
     public SHOW()  throws IOException
     {
-       //declaring the variables
+        //declaring the variables
         purchaseFile = new FILEREADCSV();
         year = 0;
         resultsFile = new FILEWRITECSV();
@@ -41,28 +39,21 @@ public class SHOW
         saveNewMembers();
         getdate();
         Display();
-    
 
     }
-
     private void Ticketorder() throws IOException
     {
-       
 
         System.out.println("** Preparing to read data file.");
-
         String[] dataRows = purchaseFile.readCSVtable();
-       
         noOfTicketorder = dataRows.length ;// number of orders calculated after reading file
-
         System.out.println("** " + noOfTicketorder + " rows read.\n\n");
-
       
         ticketorderlist = new TICKETORDER[noOfTicketorder];
-     
+
         for  (int i = 0; i < noOfTicketorder; i++) {
             ticketorderlist[i] = new TICKETORDER();
-            
+
             ticketorderlist[i].readTicketorderDetails(dataRows[i]);
         }
     }
@@ -97,7 +88,7 @@ public class SHOW
             else 
             {
                 Total = Total + 10;
-                
+
                 //resultsFile.writeCSVtable(fileContent);
             }
 
@@ -110,15 +101,16 @@ public class SHOW
             // *send for writing to file as a string containing all data
 
         }
-    
+
     }
-    
+
     public static void main(String[] args)  throws IOException
     {
         SHOW myShow = new SHOW();
         myShow.processorder();
     }
-     public void saveNewMembers() throws IOException
+
+    public void saveNewMembers() throws IOException
     {
         String fileContent = "";
         int count = 0;
@@ -140,7 +132,6 @@ public class SHOW
         resultsFile.writeCSVtable(fileContent);
         System.out.println("** File written and closed.");
     }
-   
 
 
     public void calcMETHOD()
@@ -154,7 +145,8 @@ public class SHOW
             popmethod = "sold online";
         }
     }
-     public void getdate()
+
+    public void getdate()
     {
         year = Calendar.getInstance().get(Calendar.YEAR);
     }
