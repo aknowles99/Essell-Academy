@@ -9,11 +9,11 @@ public class SHOW
  
     private TICKETORDER ticketorderlist[];// array of ticket orders 
     private int noOfTicketorder;
-    private int purchasemethodW;
-    private int purchasemethodS;
-    private String popmethod;
+      private int purchasemethodS;
     private int Total;
     private int year;
+    private int purchasemethodW;
+ private String popmethod;
 
     // CLASSes to open, create, read/write, close files
     FILEREADCSV purchaseFile; 
@@ -33,9 +33,9 @@ public class SHOW
         popmethod = " ";
     }
 
-    public void processTicketorder()  throws IOException
+    public void processorder()  throws IOException
     {
-        setUpTicketorderList();
+        Ticketorder();
         countPURCHASE();
         calcMETHOD();
         saveNewMembers();
@@ -45,7 +45,7 @@ public class SHOW
 
     }
 
-    private void setUpTicketorderList() throws IOException
+    private void Ticketorder() throws IOException
     {
        
 
@@ -112,6 +112,12 @@ public class SHOW
         }
     
     }
+    
+    public static void main(String[] args)  throws IOException
+    {
+        SHOW myShow = new SHOW();
+        myShow.processorder();
+    }
      public void saveNewMembers() throws IOException
     {
         String fileContent = "";
@@ -134,16 +140,8 @@ public class SHOW
         resultsFile.writeCSVtable(fileContent);
         System.out.println("** File written and closed.");
     }
-    public void getdate()
-    {
-        year = Calendar.getInstance().get(Calendar.YEAR);
-    }
+   
 
-    public static void main(String[] args)  throws IOException
-    {
-        SHOW myShow = new SHOW();
-        myShow.processTicketorder();
-    }
 
     public void calcMETHOD()
     {
@@ -155,6 +153,10 @@ public class SHOW
         {
             popmethod = "sold online";
         }
+    }
+     public void getdate()
+    {
+        year = Calendar.getInstance().get(Calendar.YEAR);
     }
 
     public void Display()
