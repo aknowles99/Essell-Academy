@@ -3,22 +3,22 @@ import javax.swing.JOptionPane;
 public class TICKETORDER
 {
 
-    private String cID;
-    private char tID;
-    private int notickets;
-    private String ticketID;
-    private char purchase;
-     private String purchasefull;
+    private String vcID;
+    private char vtID;
+    private int vnotickets;
+    private String vticketID;
+    private char vpurchase;
+     private String vpurchasefull;
     public TICKETORDER()
     {
         // initialise instance variables
 
-        cID= "";
-        tID = ' ' ;
-        purchase = ' ';
-        ticketID ="";
-        notickets = 0;
-        purchasefull = " ";
+        vcID= "";
+        vtID = ' ' ;
+        vpurchase = ' ';
+        vticketID ="";
+        vnotickets = 0;
+        vpurchasefull = " ";
     }
 
     // file handling store details from file
@@ -26,12 +26,12 @@ public class TICKETORDER
     {
         String[] rowItems = dataItems.split(",");
         // store each data item as instance property
-        cID = rowItems[0];
-        tID = (rowItems[1]).charAt(0);
-        ticketID =rowItems[1];
-        notickets = Integer.parseInt(rowItems[2]);
-        purchase = rowItems[3].charAt(0);
-        purchasefull = rowItems[3];
+        vcID = rowItems[0];
+        vtID = (rowItems[1]).charAt(0);
+        vticketID =rowItems[1];
+        vnotickets = Integer.parseInt(rowItems[2]);
+        vpurchase = rowItems[3].charAt(0);
+        vpurchasefull = rowItems[3];
 
     }
     public String writeDetails()
@@ -39,26 +39,26 @@ public class TICKETORDER
         // join up data into a string to output as a row
         // use "," to separate csv columns
 
-        String memberData = "";
-        memberData = memberData.concat(cID);
-        memberData = memberData.concat(",");
-        memberData = memberData.concat((ticketID));
-        memberData = memberData.concat(",");
-        memberData = memberData.concat(Float.toString(notickets));
-        memberData = memberData.concat(",");
-        memberData = memberData.concat(purchasefull);
+        String vmemberData = "";
+        vmemberData = vmemberData.concat(vcID);
+        vmemberData = vmemberData.concat(",");
+        vmemberData = vmemberData.concat((vticketID));
+        vmemberData = vmemberData.concat(",");
+        vmemberData = vmemberData.concat(Float.toString(vnotickets));
+        vmemberData = vmemberData.concat(",");
+        vmemberData = vmemberData.concat(vpurchasefull);
 
-        return memberData;
+        return vmemberData;
     }
 
     public char getPURCHASE() 
     {
-        return purchase;
+        return vpurchase;
     }
 
     public char gettID() 
     {
-        return tID;
+        return vtID;
     }
     //public void displayDetails()
     //{

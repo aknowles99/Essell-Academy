@@ -6,12 +6,12 @@ public class SHOW
 
     
     private TICKETORDER ticketorderlist[];// array of ticket orders 
-    private int noOfTicketorder;
-    private int purchasemethodS;
-    private int Total;
-    private int year;
-    private int purchasemethodW;
-    private String popmethod;
+    private int vnoOfTicketorder;
+    private int vpurchasemethodS;
+    private int vTotal;
+    private int vyear;
+    private int vpurchasemethodW;
+    private String vpopmethod;
 
     // CLASSes to open, create, read/write, close files
     FILEREADCSV purchaseFile; 
@@ -22,13 +22,13 @@ public class SHOW
     {
         //declaring the variables
         purchaseFile = new FILEREADCSV();
-        year = 0;
+        vyear = 0;
         resultsFile = new FILEWRITECSV();
-        Total = 0;
-        purchasemethodW = 0;
-        purchasemethodS = 0;
-        noOfTicketorder = 0;
-        popmethod = " ";
+        vTotal = 0;
+        vpurchasemethodW = 0;
+        vpurchasemethodS = 0;
+        vnoOfTicketorder = 0;
+        vpopmethod = " ";
     }
 
     public void processorder()  throws IOException
@@ -46,12 +46,12 @@ public class SHOW
 
         System.out.println("** Preparing to read data file.");
         String[] dataRows = purchaseFile.readCSVtable();
-        noOfTicketorder = dataRows.length ;// number of orders calculated after reading file
-        System.out.println("** " + noOfTicketorder + " rows read.\n\n");
+        vnoOfTicketorder = dataRows.length ;// number of orders calculated after reading file
+        System.out.println("** " + vnoOfTicketorder + " rows read.\n\n");
       
-        ticketorderlist = new TICKETORDER[noOfTicketorder];
+        ticketorderlist = new TICKETORDER[vnoOfTicketorder];
 
-        for  (int i = 0; i < noOfTicketorder; i++) {
+        for  (int i = 0; i < vnoOfTicketorder; i++) {
             ticketorderlist[i] = new TICKETORDER();
 
             ticketorderlist[i].readTicketorderDetails(dataRows[i]);
@@ -64,30 +64,30 @@ public class SHOW
         String fileContent = "";
 
         // start the count
-        int count = 0;
+        int vcount = 0;
 
         // loop for each item : member
-        for (int i = 0; i < noOfTicketorder; i++)
+        for (int i = 0; i < vnoOfTicketorder; i++)
         {
             // decide if current item: member matches target: bmi
             if (ticketorderlist[i].getPURCHASE() == 'S' )
             {
-                purchasemethodS = purchasemethodS +1;
+                vpurchasemethodS = vpurchasemethodS +1;
             }
             else 
             {
-                purchasemethodW = purchasemethodW +1;
+                vpurchasemethodW = vpurchasemethodW +1;
             }
 
             if (ticketorderlist[i].gettID() == 'T' || ticketorderlist[i].gettID() == 'W')
             {
 
-                Total = Total + 5;
+                vTotal = vTotal + 5;
                 // *display the details for the member
             }
             else 
             {
-                Total = Total + 10;
+                vTotal = vTotal + 10;
 
                 //resultsFile.writeCSVtable(fileContent);
             }
@@ -113,13 +113,13 @@ public class SHOW
     public void saveNewMembers() throws IOException
     {
         String fileContent = "";
-        int count = 0;
-        for (int i = 0; i < noOfTicketorder; i++) 
+        int vcount = 0;
+        for (int i = 0; i < vnoOfTicketorder; i++) 
         {
             if(ticketorderlist[i].gettID() == 'F' )
             {
-                count = count + 1;
-                if (count>1) 
+                vcount = vcount + 1;
+                if (vcount>1) 
                 {
                     fileContent = fileContent.concat("\n");
                 }
@@ -136,26 +136,26 @@ public class SHOW
 
     public void calcMETHOD()
     {
-        if (purchasemethodS > purchasemethodW)
+        if (vpurchasemethodS > vpurchasemethodW)
         {
-            popmethod = "sold in school";
+            vpopmethod = "sold in school";
         }
         else 
         {
-            popmethod = "sold online";
+            vpopmethod = "sold online";
         }
     }
 
     public void getdate()
     {
-        year = Calendar.getInstance().get(Calendar.YEAR);
+        vyear = Calendar.getInstance().get(Calendar.YEAR);
     }
 
     public void Display()
     {
-        System.out.println("\n Essell Academy Choral Shield " + year);
-        System.out.println("\n The total money rasied for charity is £" + Total);
-        System.out.println("the most popular method of sale is " + (popmethod));
+        System.out.println("\n Essell Academy Choral Shield " + vyear);
+        System.out.println("\n The total money rasied for charity is £" + vTotal);
+        System.out.println("the most popular method of sale is " + (vpopmethod));
         // A blank line to separate this report from others.
         System.out.println();
     }
